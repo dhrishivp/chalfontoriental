@@ -252,11 +252,24 @@ p { margin: 0 0 1em; }
 .menu__item { padding: 13px 0; border-bottom: 1px dashed var(--line); }
 .menu__item-row { display: flex; align-items: baseline; gap: 10px; }
 .menu__item-name { font-weight: 700; font-size: 1.08rem; }
-.menu__item-tag { font-size: .72rem; font-weight: 700; color: var(--red); margin-left: 4px; }
+.menu__item-num { flex: none; width: 1.87rem; font-size: .85rem; font-weight: 600; color: var(--gold-deep); font-variant-numeric: tabular-nums; }
+.menu__item-prices { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 18px; margin: 4px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--red); }
+.menu__item-prices small { font-family: var(--font-body); font-weight: 600; font-size: .78rem; color: var(--ink-soft); margin-right: 2px; }
+
+.menu__tag {
+  display: inline-block; vertical-align: 2px; margin-left: 4px; padding: 1px 6px; border-radius: 999px;
+  font-family: var(--font-body); font-size: .68rem; font-weight: 700; letter-spacing: .04em; line-height: 1.4;
+}
+.menu__tag--veg { background: #e3f1e0; color: #2f6b2a; }
+.menu__tag--hot { background: #fbe3e0; color: var(--red); }
+.menu__tag--nuts { background: #f6ecd2; color: #7a5a12; }
+.menu__legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 20px; font-size: .9rem; color: var(--ink-soft); margin: -28px auto 44px; }
+.menu__legend .menu__tag { margin: 0 6px 0 0; }
 .menu__item-dots { flex: 1; border-bottom: 2px dotted #d8cbb0; transform: translateY(-4px); min-width: 20px; }
 .menu__item-price { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--red); white-space: nowrap; }
 .menu__item-price small { font-family: var(--font-body); font-weight: 400; font-size: .78rem; color: var(--ink-soft); }
 .menu__item-desc { font-size: .93rem; color: var(--ink-soft); margin: 2px 0 0; }
+.menu__item--numbered .menu__item-desc { padding-left: 2.5rem; }
 
 .allergy {
   max-width: 920px; margin: 8px auto 0; font-size: .95rem; color: var(--ink-soft);

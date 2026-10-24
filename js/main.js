@@ -92,16 +92,38 @@
     return '<a class="menu__tab" href="#cat-' + cat.id + '">' + esc(cat.title) + "</a>";
   }).join("");
 
+  var TAGS = [
+    { key: "veg", label: "V", cls: "veg", title: "Suitable for vegetarians" },
+    { key: "hot", label: "Hot", cls: "hot", title: "Spicy" },
+    { key: "nuts", label: "Nuts", cls: "nuts", title: "Contains nuts" }
+  ];
+
+  function tagsHtml(item) {
+    return TAGS.filter(function (t) { return item[t.key]; }).map(function (t) {
+      return ' <span class="menu__tag menu__tag--' + t.cls + '" title="' + t.title + '">' + t.label + "</span>";
+    }).join("");
+  }
+
   panelsEl.innerHTML = menu.map(function (cat) {
     var items = cat.items.map(function (item) {
+      var sizes = item.sizes || cat.sizes || [];
+      var multi = item.prices
+        ? '<p class="menu__item-prices">' + item.prices.map(function (price, i) {
+            return "<span><small>" + esc(sizes[i] || "") + "</small> £" + esc(price) + "</span>";
+          }).join("") + "</p>"
+        : "";
       return (
-        '<li class="menu__item">' +
+        '<li class="menu__item' + (item.num ? " menu__item--numbered" : "") + '">' +
           '<div class="menu__item-row">' +
-            '<span class="menu__item-name">' + esc(item.name) + (item.hot ? ' <span class="menu__item-tag">Hot</span>' : "") + "</span>" +
-            '<span class="menu__item-dots" aria-hidden="true"></span>' +
-            '<span class="menu__item-price">' + (item.from ? "<small>from</small> " : "") + "£" + esc(item.price) + "</span>" +
+            (item.num ? '<span class="menu__item-num">' + esc(item.num) + "</span>" : "") +
+            '<span class="menu__item-name">' + esc(item.name) + tagsHtml(item) + "</span>" +
+            (item.price
+              ? '<span class="menu__item-dots" aria-hidden="true"></span>' +
+                '<span class="menu__item-price">£' + esc(item.price) + "</span>"
+              : "") +
           "</div>" +
           (item.desc ? '<p class="menu__item-desc">' + esc(item.desc) + "</p>" : "") +
+          multi +
         "</li>"
       );
     }).join("");
