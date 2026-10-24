@@ -15,7 +15,7 @@ python3 -m http.server 8000
 
 - **Menu**: edit `js/menu-data.js`. Each category has a title, an optional note, optional `sizes` labels (e.g. Small / Large), and a list of items. Item fields are listed at the top of the file: `num`, `name`, `desc`, `price` or `prices`, and the `veg`, `hot` and `nuts` tags. The page builds the tabs and lists from this file.
 - **Hours**: the hours table is in `index.html` (`#hours`). The live "Open now" badge reads `OPEN_MIN`, `CLOSE_MIN` and `CLOSED_DAYS` in `js/main.js`. The footer, the info strip and the schema markup also show the hours.
-- **Photos**: these go in `images/`. The hero uses `shop-front.webp`, the About section uses `food.webp`, and `og-image.jpg` is the preview image shown when the link is shared.
+- **Photos**: these go in `images/`. The hero uses `chalfont-shop-front.webp`, the About section uses `chalfont-food.webp`, and `chalfont-og.jpg` is the preview image shown when the link is shared.
 
 ## Deploy
 
